@@ -16,44 +16,16 @@
 //  along with advent_of_code_2020.  If not, see
 //  <https://www.gnu.org/licenses/>.
 
-#include "main.hpp"
+#ifndef aoc2020_day_1_hpp
+#define aoc2020_day_1_hpp
 
-#include "files.hpp"
-#include "input.hpp"
+#include <string>
 
-#include <iostream>
+namespace day_1 {
 
-#include "day_1.hpp"
+std::string part_a(std::string input);
+std::string part_b(std::string input);
 
-int main(int argc, char const *argv[]) {
-	input in;
+}  // namespace day_1
 
-	if (!in.parse(argc, argv)) {
-		return -1;
-	}
-
-	std::string input_contents;
-	if (!files::read_file(input_contents, in.input_filename)) {
-		return -1;
-	}
-
-	std::string out;
-	switch (in.day) {
-		case 1: {
-			if (!in.part) {
-				out = day_1::part_a(input_contents);
-			} else {
-				out = day_1::part_b(input_contents);
-			}
-			break;
-		}
-		default: {
-			std::cout << "This day has no solution yet!" << std::endl;
-			break;
-		}
-	}
-
-	std::cout << out << std::endl;
-
-	return 0;
-}
+#endif	// aoc2020_day_1_hpp
