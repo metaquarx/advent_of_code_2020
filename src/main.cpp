@@ -25,6 +25,7 @@
 
 #include "day_1.hpp"
 #include "day_2.hpp"
+#include "day_3.hpp"
 
 int main(int argc, char const *argv[]) {
 	input in;
@@ -53,6 +54,14 @@ int main(int argc, char const *argv[]) {
 				out = day_2::part_a(input_contents);
 			} else {
 				out = day_2::part_b(input_contents);
+			}
+			break;
+		}
+		case 3: {
+			if (!in.part) {
+				out = day_3::part_a(input_contents);
+			} else {
+				out = day_3::part_b(input_contents);
 			}
 			break;
 		}
