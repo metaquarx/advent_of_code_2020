@@ -18,21 +18,10 @@
 
 #include "day_4.hpp"
 
-#include <algorithm>
 #include <regex>
 #include <vector>
 
-#include <iostream>
-
-std::string day_4::part_a(std::string input) {
-	std::regex r_byr("(byr:)");
-	std::regex r_iyr("(iyr:)");
-	std::regex r_eyr("(eyr:)");
-	std::regex r_hgt("(hgt:)");
-	std::regex r_hcl("(hcl:)");
-	std::regex r_ecl("(ecl:)");
-	std::regex r_pid("(pid:)");
-
+static std::vector<std::string> get_entries(std::string &input) {
 	std::vector<std::string> entries;
 
 	while (input.find("\n\n") != std::string::npos) {
@@ -47,6 +36,20 @@ std::string day_4::part_a(std::string input) {
 
 	std::replace(input.begin(), input.end(), '\n', ' ');
 	entries.push_back(input);
+
+	return entries;
+}
+
+std::string day_4::part_a(std::string input) {
+	std::regex r_byr("(byr:)");
+	std::regex r_iyr("(iyr:)");
+	std::regex r_eyr("(eyr:)");
+	std::regex r_hgt("(hgt:)");
+	std::regex r_hcl("(hcl:)");
+	std::regex r_ecl("(ecl:)");
+	std::regex r_pid("(pid:)");
+
+	auto entries = get_entries(input);
 
 	unsigned valid = 0;
 
@@ -75,19 +78,7 @@ std::string day_4::part_b(std::string input) {
 	std::regex r_ecl("ecl:(amb|blu|brn|gry|grn|hzl|oth)");
 	std::regex r_pid("pid:(\\d){9}\\b");
 
-	std::vector<std::string> entries;
-
-	while (input.find("\n\n") != std::string::npos) {
-		unsigned pos = static_cast<unsigned>(input.find("\n\n"));
-		std::string entry = input.substr(0, pos + 1);
-		input = input.substr(pos + 2);
-
-		std::replace(entry.begin(), entry.end(), '\n', ' ');
-
-		entries.push_back(entry);
-	}
-	std::replace(input.begin(), input.end(), '\n', ' ');
-	entries.push_back(input);
+	auto entries = get_entries(input);
 
 	unsigned valid = 0;
 

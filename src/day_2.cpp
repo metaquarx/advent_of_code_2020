@@ -18,32 +18,34 @@
 
 #include "day_2.hpp"
 
-#include <cstdint>
 #include <cstdio>
 
-std::string day_2::part_a(std::string input) {
-	unsigned min;
-	unsigned max;
+struct password_entry {
+	unsigned pos_a;
+	unsigned pos_b;
 	char specifier;
 	std::string password;
+};
 
+std::string day_2::part_a(std::string input) {
+	password_entry temp;
 	unsigned total = 0;
 
 	char buffer[50];
 	while (input.size() > 8
-		   && std::sscanf(input.c_str(), "%u-%u %1c: %50s", &min, &max,
-						  &specifier, buffer)) {
-		password = std::string(buffer);
+		   && std::sscanf(input.c_str(), "%u-%u %1c: %50s", &temp.pos_a,
+						  &temp.pos_b, &temp.specifier, buffer)) {
+		temp.password = std::string(buffer);
 		input = input.substr(input.find('\n') + 1);
 
 		unsigned count = 0;
-		for (unsigned i = 0; i < password.size(); i++) {
-			if (password[i] == specifier) {
+		for (unsigned i = 0; i < temp.password.size(); i++) {
+			if (temp.password[i] == temp.specifier) {
 				count++;
 			}
 		}
 
-		if (count >= min && count <= max) {
+		if (count >= temp.pos_a && count <= temp.pos_b) {
 			total++;
 		}
 	}
@@ -53,25 +55,23 @@ std::string day_2::part_a(std::string input) {
 
 
 std::string day_2::part_b(std::string input) {
-	unsigned pos_a;
-	unsigned pos_b;
-	char specifier;
-	std::string password;
-
+	password_entry temp;
 	unsigned total = 0;
 
 	char buffer[50];
 	while (input.size() > 8
-		   && std::sscanf(input.c_str(), "%u-%u %1c: %50s", &pos_a, &pos_b,
-						  &specifier, buffer)) {
-		password = std::string(buffer);
+		   && std::sscanf(input.c_str(), "%u-%u %1c: %50s", &temp.pos_a,
+						  &temp.pos_b, &temp.specifier, buffer)) {
+		temp.password = std::string(buffer);
 		input = input.substr(input.find('\n') + 1);
 
-		unsigned idx_a = pos_a - 1;
-		unsigned idx_b = pos_b - 1;
+		unsigned idx_a = temp.pos_a - 1;
+		unsigned idx_b = temp.pos_b - 1;
 
-		if ((password.size() > idx_a && password[idx_a] == specifier)
-			!= (password.size() > idx_b && password[idx_b] == specifier)) {
+		if ((temp.password.size() > idx_a
+			 && temp.password[idx_a] == temp.specifier)
+			!= (temp.password.size() > idx_b
+				&& temp.password[idx_b] == temp.specifier)) {
 			total++;
 		}
 	}

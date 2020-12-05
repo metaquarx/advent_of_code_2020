@@ -21,7 +21,9 @@
 #include "files.hpp"
 #include "input.hpp"
 
+#include <functional>
 #include <iostream>
+#include <unordered_map>
 
 #include "day_1.hpp"
 #include "day_2.hpp"
@@ -41,55 +43,24 @@ int main(int argc, char const *argv[]) {
 		return -1;
 	}
 
-	std::string out;
-	switch (in.day) {
-		case 1: {
-			if (!in.part) {
-				out = day_1::part_a(input_contents);
-			} else {
-				out = day_1::part_b(input_contents);
-			}
-			break;
-		}
-		case 2: {
-			if (!in.part) {
-				out = day_2::part_a(input_contents);
-			} else {
-				out = day_2::part_b(input_contents);
-			}
-			break;
-		}
-		case 3: {
-			if (!in.part) {
-				out = day_3::part_a(input_contents);
-			} else {
-				out = day_3::part_b(input_contents);
-			}
-			break;
-		}
-		case 4: {
-			if (!in.part) {
-				out = day_4::part_a(input_contents);
-			} else {
-				out = day_4::part_b(input_contents);
-			}
-			break;
-		}
-		case 5: {
-			if (!in.part) {
-				out = day_5::part_a(input_contents);
-			} else {
-				out = day_5::part_b(input_contents);
-			}
-			break;
-		}
-		default: {
-			std::cout << "This day has no solution yet!" << std::endl;
-			break;
-		}
+	std::unordered_map<std::string, std::function<std::string(std::string)>>
+	  solutions;
+	solutions["1a"] = day_1::part_a;
+	solutions["1b"] = day_1::part_b;
+	solutions["2a"] = day_2::part_a;
+	solutions["2b"] = day_2::part_b;
+	solutions["3a"] = day_3::part_a;
+	solutions["3b"] = day_3::part_b;
+	solutions["4a"] = day_4::part_a;
+	solutions["4b"] = day_4::part_b;
+	solutions["5a"] = day_5::part_a;
+	solutions["5b"] = day_5::part_b;
+
+	std::string requested = std::to_string(in.day) + (in.part ? "b" : "a");
+	if (solutions.find(requested) != solutions.end()) {
+		std::cout << solutions[requested](input_contents) << std::endl;
+	} else {
+		std::cout << "That solution doesn't exist yet!" << std::endl;
 	}
-
-	std::cout << out << std::endl;
-
 	return 0;
 }

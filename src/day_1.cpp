@@ -21,9 +21,7 @@
 #include <sstream>
 #include <vector>
 
-#include <iostream>
-
-std::string day_1::part_a(std::string input) {
+static std::vector<unsigned> get_expense_report(std::string &input) {
 	std::vector<unsigned> expense_report;
 
 	std::stringstream ss;
@@ -33,6 +31,12 @@ std::string day_1::part_a(std::string input) {
 	while (ss >> temp) {
 		expense_report.push_back(temp);
 	}
+
+	return expense_report;
+}
+
+std::string day_1::part_a(std::string input) {
+	auto expense_report = get_expense_report(input);
 
 	for (unsigned i = 0; i < expense_report.size(); i++) {
 		for (unsigned j = 0; j < expense_report.size(); j++) {
@@ -42,20 +46,12 @@ std::string day_1::part_a(std::string input) {
 		}
 	}
 
-	return "No solution";
+	return "No solution found";
 }
 
 
 std::string day_1::part_b(std::string input) {
-	std::vector<unsigned> expense_report;
-
-	std::stringstream ss;
-	ss << input;
-
-	unsigned temp;
-	while (ss >> temp) {
-		expense_report.push_back(temp);
-	}
+	auto expense_report = get_expense_report(input);
 
 	for (unsigned i = 0; i < expense_report.size(); i++) {
 		for (unsigned j = 0; j < expense_report.size(); j++) {
@@ -69,5 +65,5 @@ std::string day_1::part_b(std::string input) {
 		}
 	}
 
-	return "No solution";
+	return "No solution found";
 }
