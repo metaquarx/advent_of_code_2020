@@ -30,6 +30,7 @@ set(SOURCE_FILES
 	src/day_2.cpp
 	src/day_3.cpp
 	src/day_4.cpp
+	src/day_5.cpp
 )
 
 add_executable(aoc2020 ${SOURCE_FILES})
