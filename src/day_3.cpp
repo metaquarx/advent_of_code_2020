@@ -19,14 +19,13 @@
 #include "day_3.hpp"
 
 #include <cstdint>
-#include <utility>
 #include <vector>
 
 static unsigned loop(unsigned index, unsigned max) {
 	return index % max;
 }
 
-std::string day_3::part_a(std::string input) {
+static std::vector<std::vector<bool>> get_trees(std::string &input) {
 	std::vector<std::vector<bool>> trees;
 
 	while (input.find("\n") != std::string::npos) {
@@ -46,9 +45,16 @@ std::string day_3::part_a(std::string input) {
 		trees.push_back(temp);
 	}
 
+	return trees;
+}
+
+std::string day_3::part_a(std::string input) {
+	auto trees = get_trees(input);
+
 	unsigned max = static_cast<unsigned>(trees[0].size());
 	unsigned total = 0;
 	unsigned right = 0;
+
 	for (auto &treeline : trees) {
 		if (treeline[loop(right, max)] == true) {
 			total++;
@@ -61,31 +67,15 @@ std::string day_3::part_a(std::string input) {
 
 
 std::string day_3::part_b(std::string input) {
-	std::vector<std::vector<bool>> trees;
-
-	while (input.find("\n") != std::string::npos) {
-		unsigned pos = static_cast<unsigned>(input.find("\n"));
-		std::string line = input.substr(0, pos);
-		input = input.substr(pos + 1);
-
-		std::vector<bool> temp;
-		for (char &c : line) {
-			if (c == '.') {
-				temp.push_back(false);
-			} else {
-				temp.push_back(true);
-			}
-		}
-
-		trees.push_back(temp);
-	}
+	auto trees = get_trees(input);
 
 	unsigned max = static_cast<unsigned>(trees[0].size());
 	unsigned long total = 1;
 
 	std::vector<std::pair<uint8_t, uint8_t>> courses = {
 	  {1, 1}, {3, 1}, {5, 1}, {7, 1}, {1, 2}};
-	for (auto course : courses) {
+
+	for (auto &course : courses) {
 		unsigned trees_hit = 0;
 		unsigned right = 0;
 		for (unsigned down = 0; down < trees.size(); down += course.second) {

@@ -21,41 +21,48 @@
 #include <cmath>
 #include <vector>
 
-#include <iostream>
-
-std::string day_5::part_a(std::string input) {
+static std::vector<std::string> get_passes(std::string &input) {
 	std::vector<std::string> passes;
+
 	while (input.find("\n") != std::string::npos) {
 		unsigned pos = static_cast<unsigned>(input.find("\n"));
 		passes.push_back(input.substr(0, pos));
 		input = input.substr(pos + 1);
 	}
 
+	return passes;
+}
+
+static unsigned simulate_ticket(std::string &input) {
+	unsigned rows_idx = 0;
+	unsigned rows_range = 128;
+	unsigned clmn_idx = 0;
+	unsigned clmn_range = 8;
+	for (auto &instruction : input) {
+		switch (instruction) {
+			case 'B':
+				rows_idx += static_cast<unsigned>(std::ceil(rows_range / 2));
+				[[fallthrough]];
+			case 'F': rows_range /= 2; break;
+			case 'R':
+				clmn_idx += static_cast<unsigned>(std::ceil(clmn_range / 2));
+				[[fallthrough]];
+			case 'L': clmn_range /= 2; break;
+		}
+	}
+
+	unsigned seat_id = rows_idx * 8 + clmn_idx;
+
+	return seat_id;
+}
+
+std::string day_5::part_a(std::string input) {
+	auto passes = get_passes(input);
+
 	unsigned highest_id = 0;
 
 	for (auto &pass : passes) {
-		unsigned rows_idx = 0;
-		unsigned rows_range = 128;
-		unsigned clmn_idx = 0;
-		unsigned clmn_range = 8;
-		for (auto &instruction : pass) {
-			switch (instruction) {
-				case 'F': rows_range /= 2; break;
-				case 'B':
-					rows_idx +=
-					  static_cast<unsigned>(std::ceil(rows_range / 2));
-					rows_range /= 2;
-					break;
-				case 'L': clmn_range /= 2; break;
-				case 'R':
-					clmn_idx +=
-					  static_cast<unsigned>(std::ceil(clmn_range / 2));
-					clmn_range /= 2;
-					break;
-			}
-		}
-
-		unsigned seat_id = rows_idx * 8 + clmn_idx;
+		auto seat_id = simulate_ticket(pass);
 
 		if (seat_id > highest_id) {
 			highest_id = seat_id;
@@ -67,38 +74,12 @@ std::string day_5::part_a(std::string input) {
 
 
 std::string day_5::part_b(std::string input) {
-	std::vector<std::string> passes;
-	while (input.find("\n") != std::string::npos) {
-		unsigned pos = static_cast<unsigned>(input.find("\n"));
-		passes.push_back(input.substr(0, pos));
-		input = input.substr(pos + 1);
-	}
+	auto passes = get_passes(input);
 
 	std::vector<bool> occupied(1024, false);
 
 	for (auto &pass : passes) {
-		unsigned rows_idx = 0;
-		unsigned rows_range = 128;
-		unsigned clmn_idx = 0;
-		unsigned clmn_range = 8;
-		for (auto &instruction : pass) {
-			switch (instruction) {
-				case 'F': rows_range /= 2; break;
-				case 'B':
-					rows_idx +=
-					  static_cast<unsigned>(std::ceil(rows_range / 2));
-					rows_range /= 2;
-					break;
-				case 'L': clmn_range /= 2; break;
-				case 'R':
-					clmn_idx +=
-					  static_cast<unsigned>(std::ceil(clmn_range / 2));
-					clmn_range /= 2;
-					break;
-			}
-		}
-
-		unsigned seat_id = rows_idx * 8 + clmn_idx;
+		auto seat_id = simulate_ticket(pass);
 
 		occupied[seat_id] = true;
 	}
@@ -109,5 +90,5 @@ std::string day_5::part_b(std::string input) {
 		}
 	}
 
-	return "";
+	return "No solution found";
 }
