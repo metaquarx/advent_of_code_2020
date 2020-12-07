@@ -31,6 +31,7 @@
 #include "day_4.hpp"
 #include "day_5.hpp"
 #include "day_6.hpp"
+#include "day_7.hpp"
 
 int main(int argc, char const *argv[]) {
 	input in;
@@ -58,6 +59,8 @@ int main(int argc, char const *argv[]) {
 	solutions["5b"] = day_5::part_b;
 	solutions["6a"] = day_6::part_a;
 	solutions["6b"] = day_6::part_b;
+	solutions["7a"] = day_7::part_a;
+	solutions["7b"] = day_7::part_b;
 
 	std::string requested = std::to_string(in.day) + (in.part ? "b" : "a");
 	if (solutions.find(requested) != solutions.end()) {
