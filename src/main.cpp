@@ -26,6 +26,7 @@
 #include <unordered_map>
 
 #include "day_1.hpp"
+#include "day_10.hpp"
 #include "day_2.hpp"
 #include "day_3.hpp"
 #include "day_4.hpp"
@@ -67,6 +68,8 @@ int main(int argc, char const *argv[]) {
 	solutions["8b"] = day_8::part_b;
 	solutions["9a"] = day_9::part_a;
 	solutions["9b"] = day_9::part_b;
+	solutions["10a"] = day_10::part_a;
+	solutions["10b"] = day_10::part_b;
 
 	std::string requested = std::to_string(in.day) + (in.part ? "b" : "a");
 	if (solutions.find(requested) != solutions.end()) {
