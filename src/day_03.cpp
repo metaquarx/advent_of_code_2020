@@ -16,7 +16,7 @@
 //  along with advent_of_code_2020.  If not, see
 //  <https://www.gnu.org/licenses/>.
 
-#include "day_3.hpp"
+#include "day_03.hpp"
 
 #include <cstdint>
 #include <vector>
@@ -48,7 +48,7 @@ static std::vector<std::vector<bool>> get_trees(std::string &input) {
 	return trees;
 }
 
-std::string day_3::part_a(std::string input) {
+std::string day_03::part_a(std::string input) {
 	auto trees = get_trees(input);
 
 	unsigned max = static_cast<unsigned>(trees[0].size());
@@ -66,7 +66,7 @@ std::string day_3::part_a(std::string input) {
 }
 
 
-std::string day_3::part_b(std::string input) {
+std::string day_03::part_b(std::string input) {
 	auto trees = get_trees(input);
 
 	unsigned max = static_cast<unsigned>(trees[0].size());

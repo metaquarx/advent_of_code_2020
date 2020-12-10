@@ -16,7 +16,7 @@
 //  along with advent_of_code_2020.  If not, see
 //  <https://www.gnu.org/licenses/>.
 
-#include "day_2.hpp"
+#include "day_02.hpp"
 
 #include <cstdio>
 
@@ -27,7 +27,7 @@ struct password_entry {
 	std::string password;
 };
 
-std::string day_2::part_a(std::string input) {
+std::string day_02::part_a(std::string input) {
 	password_entry temp;
 	unsigned total = 0;
 
@@ -54,7 +54,7 @@ std::string day_2::part_a(std::string input) {
 }
 
 
-std::string day_2::part_b(std::string input) {
+std::string day_02::part_b(std::string input) {
 	password_entry temp;
 	unsigned total = 0;
 

@@ -16,7 +16,7 @@
 //  along with advent_of_code_2020.  If not, see
 //  <https://www.gnu.org/licenses/>.
 
-#include "day_5.hpp"
+#include "day_05.hpp"
 
 #include <cmath>
 #include <vector>
@@ -56,7 +56,7 @@ static unsigned simulate_ticket(std::string &input) {
 	return seat_id;
 }
 
-std::string day_5::part_a(std::string input) {
+std::string day_05::part_a(std::string input) {
 	auto passes = get_passes(input);
 
 	unsigned highest_id = 0;
@@ -73,7 +73,7 @@ std::string day_5::part_a(std::string input) {
 }
 
 
-std::string day_5::part_b(std::string input) {
+std::string day_05::part_b(std::string input) {
 	auto passes = get_passes(input);
 
 	std::vector<bool> occupied(1024, false);

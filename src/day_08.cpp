@@ -16,7 +16,7 @@
 //  along with advent_of_code_2020.  If not, see
 //  <https://www.gnu.org/licenses/>.
 
-#include "day_8.hpp"
+#include "day_08.hpp"
 
 #include <algorithm>
 #include <sstream>
@@ -63,7 +63,7 @@ static bool infinitely_loops(std::vector<std::pair<std::string, short>> &ins,
 	return false;
 }
 
-std::string day_8::part_a(std::string input) {
+std::string day_08::part_a(std::string input) {
 	auto instructions = get_instructions(input);
 	long accumulator = 0;
 
@@ -73,7 +73,7 @@ std::string day_8::part_a(std::string input) {
 }
 
 
-std::string day_8::part_b(std::string input) {
+std::string day_08::part_b(std::string input) {
 	auto instructions = get_instructions(input);
 
 	long accumulator;
