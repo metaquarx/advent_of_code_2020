@@ -16,7 +16,7 @@
 //  along with advent_of_code_2020.  If not, see
 //  <https://www.gnu.org/licenses/>.
 
-#include "day_9.hpp"
+#include "day_09.hpp"
 
 #include <algorithm>
 #include <limits>
@@ -36,7 +36,7 @@ static std::vector<unsigned> get_numbers(std::string &input) {
 	return output;
 }
 
-std::string day_9::part_a(std::string input) {
+std::string day_09::part_a(std::string input) {
 	auto numbers = get_numbers(input);
 
 	unsigned preamble = 25;
@@ -70,7 +70,7 @@ std::string day_9::part_a(std::string input) {
 }
 
 
-std::string day_9::part_b(std::string input) {
+std::string day_09::part_b(std::string input) {
 	auto numbers = get_numbers(input);
 
 	unsigned target = static_cast<unsigned>(std::stoi(part_a(input)));

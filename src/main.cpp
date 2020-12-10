@@ -25,15 +25,16 @@
 #include <iostream>
 #include <unordered_map>
 
-#include "day_1.hpp"
-#include "day_2.hpp"
-#include "day_3.hpp"
-#include "day_4.hpp"
-#include "day_5.hpp"
-#include "day_6.hpp"
-#include "day_7.hpp"
-#include "day_8.hpp"
-#include "day_9.hpp"
+#include "day_01.hpp"
+#include "day_02.hpp"
+#include "day_03.hpp"
+#include "day_04.hpp"
+#include "day_05.hpp"
+#include "day_06.hpp"
+#include "day_07.hpp"
+#include "day_08.hpp"
+#include "day_09.hpp"
+#include "day_10.hpp"
 
 int main(int argc, char const *argv[]) {
 	input in;
@@ -49,24 +50,26 @@ int main(int argc, char const *argv[]) {
 
 	std::unordered_map<std::string, std::function<std::string(std::string)>>
 	  solutions;
-	solutions["1a"] = day_1::part_a;
-	solutions["1b"] = day_1::part_b;
-	solutions["2a"] = day_2::part_a;
-	solutions["2b"] = day_2::part_b;
-	solutions["3a"] = day_3::part_a;
-	solutions["3b"] = day_3::part_b;
-	solutions["4a"] = day_4::part_a;
-	solutions["4b"] = day_4::part_b;
-	solutions["5a"] = day_5::part_a;
-	solutions["5b"] = day_5::part_b;
-	solutions["6a"] = day_6::part_a;
-	solutions["6b"] = day_6::part_b;
-	solutions["7a"] = day_7::part_a;
-	solutions["7b"] = day_7::part_b;
-	solutions["8a"] = day_8::part_a;
-	solutions["8b"] = day_8::part_b;
-	solutions["9a"] = day_9::part_a;
-	solutions["9b"] = day_9::part_b;
+	solutions["1a"] = day_01::part_a;
+	solutions["1b"] = day_01::part_b;
+	solutions["2a"] = day_02::part_a;
+	solutions["2b"] = day_02::part_b;
+	solutions["3a"] = day_03::part_a;
+	solutions["3b"] = day_03::part_b;
+	solutions["4a"] = day_04::part_a;
+	solutions["4b"] = day_04::part_b;
+	solutions["5a"] = day_05::part_a;
+	solutions["5b"] = day_05::part_b;
+	solutions["6a"] = day_06::part_a;
+	solutions["6b"] = day_06::part_b;
+	solutions["7a"] = day_07::part_a;
+	solutions["7b"] = day_07::part_b;
+	solutions["8a"] = day_08::part_a;
+	solutions["8b"] = day_08::part_b;
+	solutions["9a"] = day_09::part_a;
+	solutions["9b"] = day_09::part_b;
+	solutions["10a"] = day_10::part_a;
+	solutions["10b"] = day_10::part_b;
 
 	std::string requested = std::to_string(in.day) + (in.part ? "b" : "a");
 	if (solutions.find(requested) != solutions.end()) {

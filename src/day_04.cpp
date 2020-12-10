@@ -16,7 +16,7 @@
 //  along with advent_of_code_2020.  If not, see
 //  <https://www.gnu.org/licenses/>.
 
-#include "day_4.hpp"
+#include "day_04.hpp"
 
 #include <regex>
 #include <vector>
@@ -40,7 +40,7 @@ static std::vector<std::string> get_entries(std::string &input) {
 	return entries;
 }
 
-std::string day_4::part_a(std::string input) {
+std::string day_04::part_a(std::string input) {
 	std::regex r_byr("(byr:)");
 	std::regex r_iyr("(iyr:)");
 	std::regex r_eyr("(eyr:)");
@@ -69,7 +69,7 @@ std::string day_4::part_a(std::string input) {
 }
 
 
-std::string day_4::part_b(std::string input) {
+std::string day_04::part_b(std::string input) {
 	std::regex r_byr("byr:(\\d{4})");
 	std::regex r_iyr("iyr:(\\d{4})");
 	std::regex r_eyr("eyr:(\\d{4})");

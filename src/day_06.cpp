@@ -16,7 +16,7 @@
 //  along with advent_of_code_2020.  If not, see
 //  <https://www.gnu.org/licenses/>.
 
-#include "day_6.hpp"
+#include "day_06.hpp"
 
 #include <algorithm>
 #include <sstream>
@@ -46,7 +46,7 @@ static std::vector<std::vector<std::string>>
 	return declarations;
 }
 
-std::string day_6::part_a(std::string input) {
+std::string day_06::part_a(std::string input) {
 	auto declarations = get_declarations(input);
 
 	unsigned total = 0;
@@ -70,7 +70,7 @@ std::string day_6::part_a(std::string input) {
 }
 
 
-std::string day_6::part_b(std::string input) {
+std::string day_06::part_b(std::string input) {
 	auto declarations = get_declarations(input);
 
 	unsigned total = 0;

@@ -16,7 +16,7 @@
 //  along with advent_of_code_2020.  If not, see
 //  <https://www.gnu.org/licenses/>.
 
-#include "day_1.hpp"
+#include "day_01.hpp"
 
 #include <sstream>
 #include <vector>
@@ -35,7 +35,7 @@ static std::vector<unsigned> get_expense_report(std::string &input) {
 	return expense_report;
 }
 
-std::string day_1::part_a(std::string input) {
+std::string day_01::part_a(std::string input) {
 	auto expense_report = get_expense_report(input);
 
 	for (unsigned i = 0; i < expense_report.size(); i++) {
@@ -50,7 +50,7 @@ std::string day_1::part_a(std::string input) {
 }
 
 
-std::string day_1::part_b(std::string input) {
+std::string day_01::part_b(std::string input) {
 	auto expense_report = get_expense_report(input);
 
 	for (unsigned i = 0; i < expense_report.size(); i++) {

@@ -16,7 +16,7 @@
 //  along with advent_of_code_2020.  If not, see
 //  <https://www.gnu.org/licenses/>.
 
-#include "day_7.hpp"
+#include "day_07.hpp"
 
 #include <cstdint>
 #include <regex>
@@ -75,7 +75,7 @@ static bool contains_gold(
 	return false;
 }
 
-std::string day_7::part_a(std::string input) {
+std::string day_07::part_a(std::string input) {
 	auto rules = get_rules(input);
 
 	unsigned total = 0;
@@ -104,7 +104,7 @@ static unsigned count_bags(
 }
 
 
-std::string day_7::part_b(std::string input) {
+std::string day_07::part_b(std::string input) {
 	auto rules = get_rules(input);
 
 	return std::to_string(count_bags(rules, "shiny gold"));

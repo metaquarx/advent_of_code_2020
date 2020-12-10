@@ -16,16 +16,16 @@
 //  along with advent_of_code_2020.  If not, see
 //  <https://www.gnu.org/licenses/>.
 
-#ifndef aoc2020_day_8_hpp
-#define aoc2020_day_8_hpp
+#ifndef aoc2020_day_08_hpp
+#define aoc2020_day_08_hpp
 
 #include <string>
 
-namespace day_8 {
+namespace day_08 {
 
 std::string part_a(std::string input);
 std::string part_b(std::string input);
 
-}  // namespace day_8
+}  // namespace day_08
 
-#endif	// aoc2020_day_8_hpp
+#endif	// aoc2020_day_08_hpp
