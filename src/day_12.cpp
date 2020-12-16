@@ -62,7 +62,7 @@ static std::vector<std::pair<instruction, int16_t>>
 
 std::string day_12::part_a(std::string input) {
 	auto instructions = get_instructions(input);
-	ship ferry;
+	ship ferry(0, 0, 90);
 
 	for (auto &ins : instructions) {
 		switch (ins.first) {
@@ -75,7 +75,7 @@ std::string day_12::part_a(std::string input) {
 			case instruction::left: ferry.angle -= ins.second; break;
 			case instruction::forward:
 				if (ferry.angle < 0) {
-					ferry.angle = ferry.angle;
+					ferry.angle = 360 + ferry.angle;
 				}
 				ferry.angle %= 360;
 
